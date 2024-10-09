@@ -1,12 +1,11 @@
 const express = require('express');
-const consultasController = require('../controllers/consultasController');
-const authMiddleware = require('../middleware/authMiddleware'); // Autenticação JWT
-
 const router = express.Router();
+const consultationsController = require('../controllers/ConsultationsController');
 
-router.get('/', authMiddleware, consultasController.getConsultations);
-router.post('/', authMiddleware, consultasController.createConsultation);
-router.put('/:id', authMiddleware, consultasController.updateConsultation);
-router.delete('/:id', authMiddleware, consultasController.deleteConsultation);
+// Rota para obter todas as consultas
+router.get('/consultations', consultationsController.getConsultations);
+
+// Rota para criar uma nova consulta
+router.post('/consultations', consultationsController.createConsultation);
 
 module.exports = router;
